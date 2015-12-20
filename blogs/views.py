@@ -7,8 +7,8 @@ from django.contrib import messages
 from .models import Post
 from .forms import PostForm
 
-def index(request):
-    return render(request,'blogs/index.html',locals()) 
+#def index(request):
+#    return render(request,'blogs/index.html',locals()) 
 
 # show all blog posts, order by descending date order
 def post_list(request):
@@ -23,7 +23,7 @@ def register(request):
             new_user = form.save()
             messages.success(request, 'New user is created. Please login')
             # after successful registration, redirect to index page
-            return redirect('index')
+            return redirect('post_list')
     else:
         form = UserCreationForm()
     return render(request, "registration/register.html", {'form': form,})

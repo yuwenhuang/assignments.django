@@ -24,8 +24,12 @@ SECRET_KEY = '@ocm71i6#dqnc=xadp%43+zhhe&uhya!#q+1d0@6@#10socb8e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
+
+# Need to deploy static files if debug = false, so I don't set it 
+# See https://docs.djangoproject.com/en/1.9/howto/static-files/deployment/
+#DEBUG = False
+#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -107,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 

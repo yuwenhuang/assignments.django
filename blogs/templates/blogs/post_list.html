@@ -2,10 +2,9 @@
 {% block content %}
     {% if posts.count == 0 %}
 	    {% if user.is_authenticated %}
-	    	No posts now, please create one.
-	    	<a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span></a>
+	    	<h3>No posts now, please create one.<a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span></a></h3>
 	    {% else %}
-	    	No posts now.
+	    	<h3>No posts now. Please register to create posts.</h3>
 	    {% endif %}
     {% endif %}
 	{% for post in posts %}

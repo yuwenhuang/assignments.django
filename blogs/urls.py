@@ -3,8 +3,9 @@ from . import views
 from django.contrib.auth.views import login, logout #use default login/logout view
 
 urlpatterns = [
-	url(r'^$', views.index, name='index'),
-	url(r'^index/$', views.index, name='index'),
+	#url(r'^$', views.index, name='index'),
+	#url(r'^index/$', views.index, name='index'),
+	url(r'^$', views.post_list, name='post_list'),
 	url(r'^post_list', views.post_list, name = 'post_list'),
 	url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
 	url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
