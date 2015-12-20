@@ -1,0 +1,22 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+    {% if posts.count == 0 %}
+	    {% if user.is_authenticated %}
+	    	No posts now, please create one.
+	    	<a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span></a>
+	    {% else %}
+	    	No posts now.
+	    {% endif %}
+    {% endif %}
+	{% for post in posts %}
+	    <div class="post">
+	        <div class="metadata">
+	            <p>published: {{ post.published_date }}</p>
+	        	<p>author:{{ post.author }}</p>
+	        </div>
+	        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+	        <p>{{ post.text|linebreaks }}</p>
+	    </div>
+	    <hr></hr>
+	{% endfor %}
+{% endblock %}

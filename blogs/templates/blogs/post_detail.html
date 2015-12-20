@@ -1,0 +1,18 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+    <!--Only authenticated user can edit&delete posts, so the edit&delete icons show only if user has logined-->
+    {% if user.is_authenticated %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url "post_remove" pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+    {% endif %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="metadata">
+                Last published date: {{ post.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaks }}</p>
+    </div>
+{% endblock %}

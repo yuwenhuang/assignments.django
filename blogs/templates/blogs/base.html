@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">        
+    <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+    <title>Blog</title>
+</head>
+<body>
+    <div class="page-header">
+        {% if user.is_authenticated %}
+            <p class="top-menu">Login as {{ user.username }}<small>(<a href="{% url "django.contrib.auth.views.logout" %}">Log out</a>)</small></p>
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% else %}
+            <a href="{% url "django.contrib.auth.views.login" %}" class="top-menu">Login</span></a>
+        {% endif %}
+        <h1><a href="/">Welcome to YuSaGoAnMa Blog</a></h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
